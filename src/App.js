@@ -1,24 +1,91 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Header from "./Header.js";
+import ListOfRecipe from "./ListOfRecipe.js";
+import react from "react";
+import logo from "./assets/logo.png"
+import './App.scss';
+
+
 
 function App() {
+
+  const [foods, setFoods] = useState([]);
+  const [userInput, setUserInput] = useState("");
+  const [searchRecipe, setSearchRecipe] = useState("");
+
+  // make api call to get data
+  const apiKey = "78bce36bb0eca69a6436a9c655128f6e";
+  const apiID = "1dda632e";
+
+  // get data from api
+  useEffect(() => {
+    axios({
+      url: "https://api.edamam.com/search",
+      method: "GET",
+      dataResponse: "json",
+      params: {
+        app_id: apiID,
+        app_key: apiKey,
+        q: searchRecipe
+      }
+    }).then((response) => {
+      console.log(response.data.hits);
+      setFoods(response.data.hits);
+    })
+  }, [searchRecipe])
+
+  const inputHandler = (e) => {
+    setUserInput(e.target.value)
+  }
+
+  const handleFindRecipe = (e) => {
+    e.preventDefault();
+    setSearchRecipe(userInput)
+    setUserInput(" ");
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <React.Fragment>
+      <header>
+        <nav>
+            <h3>Food Hub <img className="logo" src={logo} alt="{website logo}" /></h3>
+        </nav>
+        <article>
+            <h1>Explore Thousands of Cusines Recipes</h1>
+          <form action="#" onSubmit={handleFindRecipe} >
+            <label htmlFor="findRecipe"> Search Your Recipe here</label>
+            <input type="text" id="findRecipe" onChange={inputHandler} value={userInput} />
+            <button>Find Recipe</button>
+          </form>
+        </article>
       </header>
-    </div>
+
+      {
+        foods.map((food, index) => {
+          const { image, label, cuisineType, calories, url, totalNutrients } = food.recipe
+          return (
+            <ListOfRecipe
+              key={index}
+              foodImg={image}
+              foodLabel={label}
+              foodType={cuisineType}
+              foodCalories={calories}
+              foodFat={totalNutrients.FAT.quantity}
+              foodCarbs={totalNutrients.CHOCDF.quantity}
+              foodSugar={totalNutrients.SUGAR.quantity}
+              foodURL={url}
+            />
+          )
+        })
+      }
+      <div>
+        <a href="#findRecipe">Find Another Recipe</a>
+      </div>
+      <footer>
+        <p><a href="https://junocollege.com/" target="_blank">Juno College of Technology</a></p>
+      </footer>
+    </React.Fragment>
   );
 }
 
