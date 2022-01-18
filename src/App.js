@@ -14,10 +14,11 @@ function App() {
   const [userInput, setUserInput] = useState("");
   const [searchRecipe, setSearchRecipe] = useState("");
 
+  
   // make api call to get data
   const apiKey = "78bce36bb0eca69a6436a9c655128f6e";
   const apiID = "1dda632e";
-
+  
   // get data from api
   useEffect(() => {
     axios({
@@ -32,8 +33,13 @@ function App() {
     }).then((response) => {
       console.log(response.data.hits);
       setFoods(response.data.hits);
+      errorMessage(response.data.hits)
     })
   }, [searchRecipe])
+  
+  const errorMessage = (array) => {
+    array.length < 1 ? console.log('yes') : console.log("no");
+  }
 
   const inputHandler = (e) => {
     setUserInput(e.target.value)
@@ -49,37 +55,46 @@ function App() {
     <React.Fragment>
       <header>
         <nav>
-            <h3>Food Hub <img className="logo" src={logo} alt="{website logo}" /></h3>
+          <h3>Food Hub <img className="logo" src={logo} alt="{website logo}" /></h3>
         </nav>
-        <article>
-            <h1>Explore Thousands of Cusines Recipes</h1>
+        <article className="wrapper">
+          <div>
+            <h1>Explore Thousands </h1>
+            <h1>of</h1>
+            <h1>Cusines Recipes</h1>
+          </div>
           <form action="#" onSubmit={handleFindRecipe} >
-            <label htmlFor="findRecipe"> Search Your Recipe here</label>
-            <input type="text" id="findRecipe" onChange={inputHandler} value={userInput} />
+            <label htmlFor="findRecipe" className="sr-only"> Search Your Recipe here</label>
+            <input type="text" id="findRecipe" placeholder="Search Recipe" onChange={inputHandler} value={userInput} />
             <button>Find Recipe</button>
           </form>
         </article>
       </header>
-
-      {
-        foods.map((food, index) => {
-          const { image, label, cuisineType, calories, url, totalNutrients } = food.recipe
-          return (
-            <ListOfRecipe
-              key={index}
-              foodImg={image}
-              foodLabel={label}
-              foodType={cuisineType}
-              foodCalories={calories}
-              foodFat={totalNutrients.FAT.quantity}
-              foodCarbs={totalNutrients.CHOCDF.quantity}
-              foodSugar={totalNutrients.SUGAR.quantity}
-              foodURL={url}
-            />
-          )
-        })
-      }
-      <div>
+      <section>
+        <div className="wrapper">
+        <ul>
+          {
+            foods.map((food, index) => {
+              const { image, label, cuisineType, calories, url, totalNutrients } = food.recipe
+              return (
+                <ListOfRecipe
+                  key={index}
+                  foodImg={image}
+                  foodLabel={label}
+                  foodType={cuisineType}
+                  foodCalories={calories}
+                  foodFat={totalNutrients.FAT.quantity}
+                  foodCarbs={totalNutrients.CHOCDF.quantity}
+                  foodSugar={totalNutrients.SUGAR.quantity}
+                  foodURL={url}
+                />
+              )
+            })
+          }
+        </ul>
+        </div>
+      </section>
+      <div className="find-another-recipe">
         <a href="#findRecipe">Find Another Recipe</a>
       </div>
       <footer>

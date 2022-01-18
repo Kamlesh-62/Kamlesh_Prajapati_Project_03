@@ -7,19 +7,17 @@ const ListOfRecipe = (props) => {
     const { foodImg, foodLabel, foodType, foodCalories, foodFat, foodCarbs, foodSugar, foodURL } = props;
     return (
         <react.Fragment>
-            <ul>
                 <li>
                     <img src={foodImg} alt={foodLabel} />
-                    <h2>{foodLabel}</h2>
+                    <h3>{foodLabel}</h3>
                     <p>Cusine Type: {foodType}</p>
-                    <h3>Nutritions</h3>
+                    <h4>Nutritions</h4>
                     <p>Calories: {Math.trunc(foodCalories)}</p>
                     <p>Carbs: {Math.trunc(foodCarbs)}g</p>
                     <p>Fat: {Math.trunc(foodFat)}g</p>
                     <p>Sugar: {Math.trunc(foodSugar)}g</p>
-                    <a href={foodURL} target="_blank">Get Full Recipe</a>
+                    <button><a href={foodURL} target="_blank">Get Full Recipe</a></button>
                 </li>
-            </ul>
         </react.Fragment>
     )
 }

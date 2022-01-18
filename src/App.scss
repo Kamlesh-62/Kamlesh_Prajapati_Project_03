@@ -8,18 +8,157 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+// import google font
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato&family=Nunito&display=swap');
+
+
 // global styling
 html{
     font-size: 125%;
     overflow-x: hidden;
 }
 h1,h2,h3,h4,h5,h6{
-    // font-family: ;
+    font-family: 'Lato', sans-serif;
     margin: 0;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+p,a,li{
+    font-family: 'Nunito', sans-serif;}
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.wrapper{
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
 
-.logo{
-    height: 30px;
+// header section
+header{
+    background: linear-gradient(to bottom, rgba(245, 246, 252, 0.8), rgba(99,165,131, 0.8)) ,url(./assets/art-1.jpg) center/cover no-repeat;
+    box-shadow: 0 1px 5px #35423c;
+    height: 70vh;
+    nav{
+        background: #63a583;
+        h3{
+            padding: 1.5rem;
+            font-weight: 600;
+            margin-left: 3rem;
+        }
+        .logo{
+            height: 30px;
+        }
+    }
+    article{
+        div{
+            margin-top: 4rem;
+            h1{
+                font-family: 'Indie Flower', cursive;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+    }
+    form{
+        text-align: center;
+
+        input[type="text"]{
+            border: none;
+            display: block;
+            width: 50%;
+            height: 3rem;
+            margin: 0 auto;
+            margin-top: 2rem;
+            font-size: 1.3rem;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgb(32, 54, 43);
+            padding-left: 1rem;
+            &::placeholder{
+                letter-spacing: 2px;
+                padding-left: 1rem;
+                color: #1b4b32cc;
+            }
+        }
+        button{
+            padding: 0.35rem 0.7rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 4px solid #1d322b;
+            background: #63a583;
+            color: #1d322b;
+            margin-top: 2rem;
+            font-weight: 700;
+        }
+    }
+}
+// main section
+section{
+    background-color: #e7f1ee;
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        li{
+            flex: 0 0 35%;
+            margin:0 3rem;
+            align-content: center;
+            margin-top: 2rem;
+            background: #a2bbaf;
+            box-shadow: 0 0 5px #245c48;
+            border-radius: 5px;
+            &:hover{
+                transform: scale(1.01);
+            }
+            img{
+                width: 100%;
+            }
+            h3,
+            h4{
+                padding: 0 1rem;
+                color: #35423c;
+            }
+            p{
+                padding: 0 1rem;
+                color: #1d322b;
+            }
+            a{
+                letter-spacing: 1px;
+                color: white;
+            }
+            button{
+                background: #245c48;
+                border: 2px solid #245c48;
+                padding: 0.35rem 0.7rem;
+                margin: 0 1rem 1rem 1rem;
+                border-radius: 5px;
+
+            }
+        }
+    }
+}
+// btn find another recipe
+.find-another-recipe{
+    text-align: center;
+    display: none;
+
+   a{
+       padding: 0.4rem 0.75rem;
+       border: #245c48;
+       background: #245c48;
+       border-radius: 5px;
+       letter-spacing: 1px;
+       color: white;
+   }
+}
+.find-another-recipe.show{
+    display: block;
 }
