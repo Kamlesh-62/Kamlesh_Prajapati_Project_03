@@ -132,10 +132,9 @@ function App() {
                   foodCarbs={totalNutrients.CHOCDF.quantity}
                   foodSugar={totalNutrients.SUGAR.quantity}
                   foodURL={url}
+                  serving = {food.recipe.yield}
                 />
-              )
-            })
-          }
+              )})}
         </ul>
         </div>
           {
@@ -145,7 +144,7 @@ function App() {
         </div> : <> </>
           }
       </section>
-      
+
       <footer>
         <p><span><a href="www.devkamlesh.com" target="_blank"> &copy; Kamlesh Prajapati 2022 </a></span></p>
       </footer>
