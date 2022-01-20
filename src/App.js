@@ -1,6 +1,6 @@
 // import module
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import react from "react";
 // import image form local src
 import logo from "./assets/logo.png"
@@ -14,26 +14,25 @@ import GoTop from "./GoTop.js";
 // import styling 
 import './App.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUtensilSpoon } from "@fortawesome/free-solid-svg-icons";
-
-
-
+import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
 
 
 function App() {
 
   const [foods, setFoods] = useState([]);
   const [userInput, setUserInput] = useState("");
-  const [searchRecipe, setSearchRecipe] = useState("");
-  const [isErrorShown, setIsErrorShown] = useState("");
+  const [isErrorShown, setIsErrorShown] = useState(false);
+  const [isButtonVisiable, setIsButtonVisiable] = useState(false);
   
   
   // make api call to get data
   const apiKey = "78bce36bb0eca69a6436a9c655128f6e";
   const apiID = "1dda632e";
-  
-  // get data from api
-  useEffect(() => {
+    
+  // handle recipe submit button
+  const handleFindRecipe = (e) => {
+    e.preventDefault();
+    
     axios({
       url: "https://api.edamam.com/search",
       method: "GET",
@@ -41,49 +40,50 @@ function App() {
       params: {
         app_id: apiID,
         app_key: apiKey,
-        q: "pasta"
+        q: userInput
       }
     }).then((response) => {
-    
       // condition to show erroe handling
-      const dishes = response.data.hits;
-      console.log(dishes);
-      if (dishes.length === 0){
-        setIsErrorShown("No data Found!");
-      }else{
-        setIsErrorShown(" ");
+      const dishes = response.data.hits; 
+
+      if (dishes.length < 1) {
+        setIsErrorShown(true);
+      } else {
+        setIsErrorShown(false);
       }
       setFoods(dishes);
-    }).catch( (error)=> {
-      setIsErrorShown("No Data Found!");
+    }).catch((e) => {
+      setIsErrorShown(e,"No Data Found!");
     })
-  }, [searchRecipe])
-  
-  
-  // handle userInput 
-  // const inputHandler = (e) => {
-  //   setUserInput(e.target.value)
-  // }
-  
-  // handle recipe submit button
-  const handleFindRecipe = (e) => {
-    e.preventDefault();
-    setSearchRecipe(userInput)
+    
+    // condition to show down arrow to go section
+    if (isButtonVisiable === false) {
+      setIsButtonVisiable(true)
+    }else{
+      setIsButtonVisiable(false)
+    } 
     setUserInput(" ");
   }
 
-  
-// store favourite recipe under username
-const [listOfRecipe, setListOfRecipe] = useState([])
-
-  const handleRecipeList = (e) => {
-    setListOfRecipe(e.target)
-    console.log(e.target)
+  // handle userInput 
+  const inputHandler = (e) => {
+    setUserInput(e.target.value)
   }
+
+  // scroll to recipe section
+// ===============================  // 
+  const recipeSectionRef = useRef()
+  
+  const handleScrollToSection = () => {
+    recipeSectionRef.current.scrollIntoView(
+      {behavior: "smooth"}
+      )
+  }
+
 
   return (
     <React.Fragment>
-      {/* <header>
+      <header>
         <nav>
           <h3>Food Hub <img className="logo" src={logo} alt="{website logo}" /></h3>
         </nav>
@@ -93,8 +93,8 @@ const [listOfRecipe, setListOfRecipe] = useState([])
             <h1 className="animation-center">of</h1>
             <h1 className="animation-right" >Cusines Recipes</h1>
           </div>
-          {
-          isErrorShown !== "" ? <p className="errorMessage">Invalid Search, Enter Dish Name to get Recipe</p> : <p> </p>
+          { 
+            isErrorShown ? <p className="errorMessage">Enter Dish Name to get Recipe</p> : <p> </p>
           }
           <form action="#" onSubmit={handleFindRecipe} >
             <label htmlFor="findRecipe" className="sr-only"> Search Your Recipe here</label>
@@ -102,13 +102,21 @@ const [listOfRecipe, setListOfRecipe] = useState([])
             <button className="findRecipe">Find Recipe</button>
           </form>
         </article>
-        {/* <FontAwesomeIcon icon={faAngleDoubleDown} className="downArrow" ></FontAwesomeIcon> */}
-      </header> */}
-      
+          
+        <div className="scrollToSectionArrow" >
+          { 
+              isButtonVisiable ?
+            <FontAwesomeIcon onClick={handleScrollToSection} icon={faAngleDoubleDown} className="downArrow" ></FontAwesomeIcon> : <div> </div>
+          }
+        </div> 
+      </header>
+    
       <section>
-        <GoTop />
+        <GoTop 
+          findRecipeHandler={handleFindRecipe}
+        />
         <div className="wrapper">
-        <ul>
+        <ul ref={recipeSectionRef}>
           {
             foods.map((food, index) => {
               const { image, label, cuisineType, calories, url, totalNutrients } = food.recipe
@@ -129,12 +137,15 @@ const [listOfRecipe, setListOfRecipe] = useState([])
           }
         </ul>
         </div>
+        <div  className="find-another-recipe">
+          {
+            isButtonVisiable ? 
+            <a href="#findRecipe">Find Another Recipe</a> : <> </>
+          }
+        </div>
       </section>
-      <div className="find-another-recipe">
-        <a href="#findRecipe">Find Recipe</a>
-      </div>
       <footer>
-        <p><a href="https://junocollege.com/" target="_blank">Juno College of Technology</a></p>
+        <p><span><a href="www.devkamlesh.com" target="_blank"> &copy; Kamlesh Prajapati 2022 </a></span></p>
       </footer>
     </React.Fragment>
   );

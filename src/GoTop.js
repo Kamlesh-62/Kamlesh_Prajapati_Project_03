@@ -6,7 +6,7 @@ import './App.scss';
 import { useEffect } from "react/cjs/react.development";
 
 
-const GoTop = () => {
+const GoTop = ({ findRecipeHandler}) => {
     const[showButton, setShowButton] = useState("false");
 
     // 
@@ -14,7 +14,7 @@ const GoTop = () => {
         window.addEventListener("scroll", showButtonVisibilty)
     }, [])
 
-    const showButtonVisibilty = () => {
+    const showButtonVisibilty = (findRecipeHandler) => {
         if(window.pageYOffset > 350){
             setShowButton(true);
         }else{
