@@ -16,6 +16,7 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 html{
     font-size: 125%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 h1,h2,h3,h4,h5,h6{
     font-family: 'Lato', sans-serif;
@@ -62,6 +63,8 @@ header{
         }
     }
     article{
+        height: 65vh;
+        position: relative;
         div{
             margin-top: 4rem;
             h1{
@@ -80,23 +83,21 @@ header{
                 animation: opacitty 5s ease-in 1;
             }
         }
-         .errorMessage{
-            letter-spacing: 1px;
-            text-align: center;
-            margin-top: 5rem;
-        }
-        
     }
     form{
         text-align: center;
-
+        margin-top: 5rem;
+        
+        .errorMessage{
+           letter-spacing: 1px;
+           text-align: center;
+       }
         input[type="text"]{
             border: none;
             display: block;
             width: 50%;
             height: 3rem;
             margin: 0 auto;
-            margin-top: 2rem;
             font-size: 1.3rem;
             border-radius: 10px;
             box-shadow: 0 0 5px rgb(32, 54, 43);
@@ -107,34 +108,55 @@ header{
                 color: #1b4b32cc;
             }
         }
-        button{
-            padding: 0.35rem 0.7rem;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 4px solid #1d322b;
-            background: #63a583;
+        button {
+            display: inline-block;
+            padding: 0.5rem 0.9rem;
+            background-color:#63a583;
             color: #1d322b;
-            margin-top: 2rem;
-            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: .15rem;
+            transition: all .3s;
             position: relative;
+            overflow: hidden;
             z-index: 1;
-            &::before{
-                content: " ";
-                background: #1d322b;
-                // color: white;
+            margin-top: 2rem;
+            border-radius: 10px;
+            border: 2px solid #1d322b;
+            font-weight: 700;
+            cursor: pointer;
+            &:after {
+                content: '';
                 position: absolute;
-                z-index: -1;
-                top: 0;
-                left: 1;
-                right: 0;
                 bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #63a583;
+                z-index: -2;
+            }
+            &:before {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0%;
+                height: 100%;
+                background-color: #245c48;
+                transition: all .3s;
+                z-index: -1;
+            }
+            &:hover {
+                color: #fff;
+                &:before {
+                width: 100%;
+                }
             }
         }
     }
     .scrollToSectionArrow{
         text-align: center;
-        margin-top: 4rem;
+        margin-top: 2rem;
         .downArrow{
             font-size: 4rem;
             color: #064931;
@@ -160,7 +182,7 @@ section{
             border-radius: 5px;
             position: relative;
             &:hover{
-                transform: scale(1.01);
+                transform: scale(1.002);
             }
             img{
                 width: 100%;
@@ -178,13 +200,25 @@ section{
                 letter-spacing: 1px;
                 color: white;
             }
-            button{
+            button {
                 background: #245c48;
-                border: 2px solid #245c48;
-                padding: 0.35rem 0.7rem;
                 margin: 0 1rem 1rem 1rem;
-                border-radius: 5px;
-
+                padding: 0.5rem 0.7rem;
+                border-radius: 7px;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #fff;
+                cursor: pointer;
+                text-align:center;
+                border: none;
+                background-size: 300% 100%;
+                transition: all .4s ease-in-out;
+                background-image: linear-gradient(to right, #219a70, #1d4135,  #245c48, #10804a);
+                box-shadow: 0 4px 10px 0 rgba(36, 96, 71, 0.75);
+                &:hover {
+                    background-position: 100% 0;
+                    transition: all .4s ease-in-out;
+                }
             }
             .saveButton{
                 position: absolute;
@@ -195,25 +229,32 @@ section{
                 border-radius: 5px;
                 cursor: pointer;
             }
-        }
+            
+        }   
     }
+
+
     .goToTopSpoon{
         font-size: 3rem;
         background-color: #245c48;
         color: #a2bbaf;
         position: fixed;
         right: 0;
-        bottom: 0px;
+        bottom: 40px;
         padding: 0.7rem;
         border-radius: 50%;
         cursor: pointer;
+        transition: transform 0.5s ease-in-out;
+        z-index: 111;
+        &:hover{
+            transform: rotate(-45deg) ;
+        }
     }
 }
 // btn find another recipe
 .find-another-recipe{
     text-align: center;
-    padding: 1rem 0;
-
+    padding: 2rem 0;
    a{
        padding: 0.4rem 0.75rem;
        border: 3px solid #245c48;
@@ -290,10 +331,66 @@ footer{
 }
 @keyframes upAndDown {
     0%{
-        transform: translateY(-20px);
+        transform: translateY(-10px);
     }
 
     100%{
         transform: translateY(10px);
     }
 }
+
+@media (max-width:810px) {
+    section{
+        ul{
+            li{
+                width: 40%;
+                margin:1rem 1.3rem;
+            }
+        }
+    }
+    
+}
+@media (max-width:700px) {
+    header {
+        form{
+            input[type="text"]{
+                width: 70%;
+            }
+        }
+        .scrollToSectionArrow{
+            margin-top: 1rem;
+        }
+    }
+    section{
+        ul{
+            display: flex;
+            justify-content: center;
+            li{
+                width: 65%;
+            }
+        }
+    }
+}
+@media (max-width:550px) {
+    header {
+        form{
+            input[type="text"]{
+                width: 90%;
+            }
+        }
+        .scrollToSectionArrow{
+            margin-top: 1rem;
+        }
+    }
+    section{
+        ul{
+            display: flex;
+            justify-content: center;
+            li{
+                width: 90%;
+                margin: 1rem 0 ;
+            }
+        }
+    }
+}
+

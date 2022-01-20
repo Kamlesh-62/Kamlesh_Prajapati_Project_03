@@ -2,15 +2,14 @@
 import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import react from "react";
+
 // import image form local src
 import logo from "./assets/logo.png"
-// firebase
-import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
-import firebaseProject from "./firebaseSetup.js";
+
 // import components
-// import Header from "./Header.js";
 import ListOfRecipe from "./ListOfRecipe.js";
 import GoTop from "./GoTop.js";
+
 // import styling 
 import './App.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,11 +24,11 @@ function App() {
   const [isButtonVisiable, setIsButtonVisiable] = useState(false);
   
   
-  // make api call to get data
+  // api key and ID
   const apiKey = "78bce36bb0eca69a6436a9c655128f6e";
   const apiID = "1dda632e";
     
-  // handle recipe submit button
+  // handle recipe submit button to get data from api and print onpage
   const handleFindRecipe = (e) => {
     e.preventDefault();
     
@@ -46,6 +45,7 @@ function App() {
       // condition to show erroe handling
       const dishes = response.data.hits; 
 
+      // condition to show Error handler message on page
       if (dishes.length < 1) {
         setIsErrorShown(true);
       } else {
@@ -56,7 +56,7 @@ function App() {
       setIsErrorShown(e,"No Data Found!");
     })
     
-    // condition to show down arrow to go section
+    // condition to show down arrow to go  recipe section
     if (isButtonVisiable === false) {
       setIsButtonVisiable(true)
     }else{
@@ -66,12 +66,13 @@ function App() {
   }
 
   // handle userInput 
+  // ===========
   const inputHandler = (e) => {
     setUserInput(e.target.value)
   }
 
   // scroll to recipe section
-// ===============================  // 
+// ===============================  
   const recipeSectionRef = useRef()
   
   const handleScrollToSection = () => {
@@ -81,9 +82,10 @@ function App() {
   }
 
 
+
   return (
     <React.Fragment>
-      <header>
+       <header>
         <nav>
           <h3>Food Hub <img className="logo" src={logo} alt="{website logo}" /></h3>
         </nav>
@@ -93,19 +95,18 @@ function App() {
             <h1 className="animation-center">of</h1>
             <h1 className="animation-right" >Cusines Recipes</h1>
           </div>
+          <form action="#" onSubmit={handleFindRecipe} >
           { 
             isErrorShown ? <p className="errorMessage">Enter Dish Name to get Recipe</p> : <p> </p>
           }
-          <form action="#" onSubmit={handleFindRecipe} >
             <label htmlFor="findRecipe" className="sr-only"> Search Your Recipe here</label>
             <input type="text" id="findRecipe" placeholder="Search Recipe" onChange={inputHandler} value={userInput} />
             <button className="findRecipe">Find Recipe</button>
           </form>
         </article>
-          
         <div className="scrollToSectionArrow" >
           { 
-              isButtonVisiable ?
+              foods.length > 0 ?
             <FontAwesomeIcon onClick={handleScrollToSection} icon={faAngleDoubleDown} className="downArrow" ></FontAwesomeIcon> : <div> </div>
           }
         </div> 
@@ -137,13 +138,14 @@ function App() {
           }
         </ul>
         </div>
-        <div  className="find-another-recipe">
           {
-            isButtonVisiable ? 
-            <a href="#findRecipe">Find Another Recipe</a> : <> </>
+          foods.length > 0 ? 
+        <div  className="find-another-recipe">
+            <a href="#findRecipe">Find Another Recipe</a> 
+        </div> : <> </>
           }
-        </div>
       </section>
+      
       <footer>
         <p><span><a href="www.devkamlesh.com" target="_blank"> &copy; Kamlesh Prajapati 2022 </a></span></p>
       </footer>

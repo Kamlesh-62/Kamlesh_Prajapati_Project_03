@@ -1,9 +1,8 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensilSpoon } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './App.scss';
-import { useEffect } from "react/cjs/react.development";
 
 
 const GoTop = ({ findRecipeHandler}) => {
@@ -15,7 +14,7 @@ const GoTop = ({ findRecipeHandler}) => {
     }, [])
 
     const showButtonVisibilty = (findRecipeHandler) => {
-        if(window.pageYOffset > 350){
+        if(window.pageYOffset > 330){
             setShowButton(true);
         }else{
             setShowButton(false)
