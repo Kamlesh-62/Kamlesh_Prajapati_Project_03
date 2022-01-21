@@ -60,6 +60,7 @@ header{
         }
         .logo{
             height: 30px;
+            animation: moving 1.1s ease-in-out infinite alternate;
         }
     }
     article{
@@ -143,7 +144,7 @@ header{
                 width: 0%;
                 height: 100%;
                 background-color: #245c48;
-                transition: all .3s;
+                transition: all .5s;
                 z-index: -1;
             }
             &:hover {
@@ -156,7 +157,7 @@ header{
     }
     .scrollToSectionArrow{
         text-align: center;
-        margin-top: 2rem;
+        margin-top: 0rem;
         .downArrow{
             font-size: 4rem;
             color: #064931;
@@ -217,7 +218,7 @@ section{
                 box-shadow: 0 4px 10px 0 rgba(36, 96, 71, 0.75);
                 &:hover {
                     background-position: 100% 0;
-                    transition: all .4s ease-in-out;
+                    transition: all .7s ease-in-out;
                 }
             }
             .saveButton{
@@ -232,8 +233,6 @@ section{
             
         }   
     }
-
-
     .goToTopSpoon{
         font-size: 3rem;
         background-color: #245c48;
@@ -251,6 +250,7 @@ section{
         }
     }
 }
+
 // btn find another recipe
 .find-another-recipe{
     text-align: center;
@@ -281,6 +281,65 @@ footer{
     }
 }
 
+// media quesry for 810px size
+@media (max-width:810px) {
+    section{
+        ul{
+            li{
+                width: 40%;
+                margin:1rem 1.3rem;
+            }
+        }
+    }
+    
+}
+// media query for 700px size
+@media (max-width:700px) {
+    header {
+        form{
+            input[type="text"]{
+                width: 70%;
+            }
+        }
+        .scrollToSectionArrow{
+            margin-top: 1rem;
+        }
+    }
+    section{
+        ul{
+            display: flex;
+            justify-content: center;
+            li{
+                width: 65%;
+            }
+        }
+    }
+}
+// media query for 550px size
+@media (max-width:550px) {
+    header {
+        form{
+            input[type="text"]{
+                width: 90%;
+            }
+        }
+        .scrollToSectionArrow{
+            margin-top: 1rem;
+        }
+    }
+    section{
+        ul{
+            display: flex;
+            justify-content: center;
+            li{
+                width: 90%;
+                margin: 1rem 0 ;
+            }
+        }
+    }
+}
+
+// list of all naimation
 @keyframes slidingRight {
     0%{
         transform: translate(1000px);
@@ -338,59 +397,11 @@ footer{
         transform: translateY(10px);
     }
 }
-
-@media (max-width:810px) {
-    section{
-        ul{
-            li{
-                width: 40%;
-                margin:1rem 1.3rem;
-            }
-        }
+@keyframes moving {
+    0%{
+        transform: rotate(-15deg)
     }
-    
-}
-@media (max-width:700px) {
-    header {
-        form{
-            input[type="text"]{
-                width: 70%;
-            }
-        }
-        .scrollToSectionArrow{
-            margin-top: 1rem;
-        }
-    }
-    section{
-        ul{
-            display: flex;
-            justify-content: center;
-            li{
-                width: 65%;
-            }
-        }
+    100%{
+        transform: rotate(25deg);
     }
 }
-@media (max-width:550px) {
-    header {
-        form{
-            input[type="text"]{
-                width: 90%;
-            }
-        }
-        .scrollToSectionArrow{
-            margin-top: 1rem;
-        }
-    }
-    section{
-        ul{
-            display: flex;
-            justify-content: center;
-            li{
-                width: 90%;
-                margin: 1rem 0 ;
-            }
-        }
-    }
-}
-

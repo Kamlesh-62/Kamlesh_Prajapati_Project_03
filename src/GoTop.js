@@ -37,7 +37,7 @@ const GoTop = ({ findRecipeHandler}) => {
                 </div>
             }
         </div>
-        )
+    )
 }
 
 export default GoTop;
