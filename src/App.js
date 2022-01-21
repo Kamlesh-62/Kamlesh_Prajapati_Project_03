@@ -1,7 +1,6 @@
 // import module
 import axios from "axios";
-import React, { useEffect, useState, useRef } from "react";
-import react from "react";
+import React, {  useState, useRef } from "react";
 
 // import image form local src
 import logo from "./assets/logo.png"
