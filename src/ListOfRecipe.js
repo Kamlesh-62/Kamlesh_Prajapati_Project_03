@@ -1,7 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import react from "react";
-import React, { useEffect, useState, useRef } from "react";
 import "./App.scss";
 
 const ListOfRecipe = (props) => {
@@ -22,7 +19,7 @@ const ListOfRecipe = (props) => {
                         serving > 1 ? <span> people </span> : <span> person </span>
                     }       
                     </p>
-                    <button><a href={foodURL} target="_blank">Get Full Recipe</a></button>
+                <button><a href={foodURL} rel="noreferrer" target="_blank">Get Full Recipe</a></button>
                 </li>
         </react.Fragment>
     )
