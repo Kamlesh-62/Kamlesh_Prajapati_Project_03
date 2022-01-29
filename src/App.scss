@@ -302,7 +302,7 @@ footer{
             }
         }
         .scrollToSectionArrow{
-            margin-top: 1rem;
+            margin-top: 0.7rem;
         }
     }
     section{
@@ -318,6 +318,10 @@ footer{
 // media query for 550px size
 @media (max-width:550px) {
     header {
+        nav h3{
+            margin-left: 0;
+        }
+        
         form{
             input[type="text"]{
                 width: 90%;
@@ -365,7 +369,7 @@ footer{
         opacity: 0;
     }
     50%{
-        transform: translate(200px);
+        transform: translate(100px);
         opacity: 0.5;
     }
     75%{
