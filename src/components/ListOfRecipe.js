@@ -1,5 +1,5 @@
 import react from "react";
-import "./App.scss";
+import "../App.scss";
 
 const ListOfRecipe = (props) => {
 

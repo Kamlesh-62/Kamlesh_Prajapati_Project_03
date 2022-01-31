@@ -6,13 +6,14 @@ import React, {  useState, useRef } from "react";
 import logo from "./assets/logo.png"
 
 // import components
-import ListOfRecipe from "./ListOfRecipe.js";
-import GoTop from "./GoTop.js";
+import ListOfRecipe from "./components/ListOfRecipe.js";
+import GoTop from "./components/GoTop.js";
+import Home from "./components/Home";
+import {Footer} from "./components/Footer"
 
 // import styling 
 import './App.scss';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
+
 
 
 function App() {
@@ -64,12 +65,6 @@ function App() {
     setUserInput(" ");
   }
 
-  // handle userInput 
-  // ===========
-  const inputHandler = (e) => {
-    setUserInput(e.target.value)
-  }
-
   // scroll to recipe section
 // ===============================  
   const recipeSectionRef = useRef()
@@ -84,33 +79,15 @@ function App() {
 
   return (
     <React.Fragment>
-       <header>
-        <nav>
-          <h3>Food Hub <img className="logo" src={logo} alt="{website logo}" /></h3>
-        </nav>
-        <article className="wrapper">
-          <div>
-            <h1 className="animation-left">Explore Thousands </h1>
-            <h1 className="animation-center">of</h1>
-            <h1 className="animation-right" >Cusines Recipes</h1>
-          </div>
-          <form action="#" onSubmit={handleFindRecipe} >
-          { 
-            isErrorShown ? <p className="errorMessage">Enter Dish Name to get Recipe</p> : <p> </p>
-          }
-            <label htmlFor="findRecipe" className="sr-only"> Search Your Recipe here</label>
-            <input type="text" id="findRecipe" placeholder="Search Recipe" onChange={inputHandler} value={userInput} />
-            <button className="findRecipe">Find Recipe</button>
-          </form>
-        </article>
-        <div className="scrollToSectionArrow" >
-          { 
-              foods.length > 0 ?
-            <FontAwesomeIcon onClick={handleScrollToSection} icon={faAngleDoubleDown} className="downArrow" ></FontAwesomeIcon> : <div> </div>
-          }
-        </div> 
-      </header>
-    
+      <Home 
+        foods={foods}
+        handleFindRecipe={handleFindRecipe}
+        isErrorShown={isErrorShown}
+        userInput={userInput}
+        setUserInput={setUserInput}
+        handleScrollToSection={handleScrollToSection}
+        />
+      
       <section>
         <GoTop 
           findRecipeHandler={handleFindRecipe}
@@ -144,9 +121,7 @@ function App() {
           }
       </section>
 
-      <footer>
-        <p><span><a href="www.devkamlesh.com" target="_blank"> &copy; Kamlesh Prajapati 2022 </a></span></p>
-      </footer>
+      <Footer />
     </React.Fragment>
   );
 }
