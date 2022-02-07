@@ -1,5 +1,5 @@
 import react from "react";
-import "../App.scss";
+import"./listOfRecipe.scss"
 
 const ListOfRecipe = (props) => {
 
@@ -9,8 +9,8 @@ const ListOfRecipe = (props) => {
                 <li>
                     <img src={foodImg} alt={foodLabel} />
                     <h3>{foodLabel}</h3>
-                    <p>Cusine Type: {foodType}</p>
-                    <h4>Nutritions</h4>
+                    <p>Cuisine Type: {foodType}</p>
+                    <h4>Nutrition</h4>
                     <p>Calories: {Math.trunc(foodCalories)}</p>
                     <p>Carbs: {Math.trunc(foodCarbs)}g</p>
                     <p>Fat: {Math.trunc(foodFat)}g</p>

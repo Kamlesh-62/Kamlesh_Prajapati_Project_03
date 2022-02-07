@@ -43,246 +43,9 @@ a{
     margin: 0 auto;
 }
 
-// header section
-header{
-    background: linear-gradient(to bottom, rgba(245, 246, 252, 0.8), rgba(99,165,131, 0.8)) ,url(./assets/art-1.jpg) center/cover no-repeat;
-    box-shadow: 0 1px 5px #35423c;
-    height: 100vh;
-    nav{
-        background: #63a583;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        h3{
-            padding: 1.5rem;
-            font-weight: 600;
-            margin-left: 3rem;
-        }
-        .logo{
-            height: 30px;
-            animation: moving 1.1s ease-in-out infinite alternate;
-        }
-    }
-    article{
-        height: 65vh;
-        position: relative;
-        div{
-            margin-top: 4rem;
-            h1{
-                font-family: 'Indie Flower', cursive;
-                text-align: center;
-                font-weight: bold;
-                margin-top: 0.5rem;
-            }
-            h1.animation-left{
-                animation: slidingleft 5s ease-in 1;
-            }
-            h1.animation-right{
-                animation: slidingRight 5s ease-in 1;
-            }
-            h1.animation-center{
-                animation: opacitty 5s ease-in 1;
-            }
-        }
-    }
-    form{
-        text-align: center;
-        margin-top: 5rem;
-        
-        .errorMessage{
-           letter-spacing: 1px;
-           text-align: center;
-       }
-        input[type="text"]{
-            border: none;
-            display: block;
-            width: 50%;
-            height: 3rem;
-            margin: 0 auto;
-            font-size: 1.3rem;
-            border-radius: 10px;
-            box-shadow: 0 0 5px rgb(32, 54, 43);
-            padding-left: 1rem;
-            &::placeholder{
-                letter-spacing: 2px;
-                padding-left: 1rem;
-                color: #1b4b32cc;
-            }
-        }
-        button {
-            display: inline-block;
-            padding: 0.5rem 0.9rem;
-            background-color:#63a583;
-            color: #1d322b;
-            text-transform: uppercase;
-            font-size: 1rem;
-            letter-spacing: .15rem;
-            transition: all .3s;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            margin-top: 2rem;
-            border-radius: 10px;
-            border: 2px solid #1d322b;
-            font-weight: 700;
-            cursor: pointer;
-            &:after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: #63a583;
-                z-index: -2;
-            }
-            &:before {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 0%;
-                height: 100%;
-                background-color: #245c48;
-                transition: all .5s;
-                z-index: -1;
-            }
-            &:hover {
-                color: #fff;
-                &:before {
-                width: 100%;
-                }
-            }
-        }
-    }
-    .scrollToSectionArrow{
-        text-align: center;
-        margin-top: 0rem;
-        .downArrow{
-            font-size: 4rem;
-            color: #064931;
-            animation: upAndDown 0.5s ease-in-out alternate infinite;
-            cursor: pointer;
-        }
-    }
-}
-// main section
-section{
-    background-color: #e7f1ee;
-    ul{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        li{
-            width: 35%;
-            margin:0 1rem;
-            align-content: center;
-            margin-top: 2rem;
-            background: #a2bbaf;
-            box-shadow: 0 0 5px #245c48;
-            border-radius: 5px;
-            position: relative;
-            &:hover{
-                transform: scale(1.002);
-            }
-            img{
-                width: 100%;
-            }
-            h3,
-            h4{
-                padding: 0 1rem;
-                color: #35423c;
-            }
-            p{
-                padding: 0 1rem;
-                color: #1d322b;
-            }
-            a{
-                letter-spacing: 1px;
-                color: white;
-            }
-            button {
-                background: #245c48;
-                margin: 0 1rem 1rem 1rem;
-                padding: 0.5rem 0.7rem;
-                border-radius: 7px;
-                font-size: 1rem;
-                font-weight: 500;
-                color: #fff;
-                cursor: pointer;
-                text-align:center;
-                border: none;
-                background-size: 300% 100%;
-                transition: all .4s ease-in-out;
-                background-image: linear-gradient(to right, #219a70, #1d4135,  #245c48, #10804a);
-                box-shadow: 0 4px 10px 0 rgba(36, 96, 71, 0.75);
-                &:hover {
-                    background-position: 100% 0;
-                    transition: all .7s ease-in-out;
-                }
-            }
-            .saveButton{
-                position: absolute;
-                bottom: 25px;
-                right: 15px;
-                color: #245c48;
-                font-size: 1.7rem;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-            
-        }   
-    }
-    .goToTopSpoon{
-        font-size: 3rem;
-        background-color: #245c48;
-        color: #a2bbaf;
-        position: fixed;
-        right: 10px;
-        bottom: 40px;
-        padding: 0.7rem;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: transform 0.5s ease-in-out;
-        z-index: 111;
-        &:hover{
-            transform: rotate(-45deg) ;
-        }
-    }
-}
 
-// btn find another recipe
-.find-another-recipe{
-    text-align: center;
-    padding: 2rem 0;
-   a{
-       padding: 0.4rem 0.75rem;
-       border: 3px solid #245c48;
-       background: #245c48;
-       border-radius: 5px;
-       letter-spacing: 1px;
-       color: white;
-       &:hover{      
-           color: #1d4135;
-           background-color: #a2bbaf;
-           border: 3px solid #245c48;
-       }
-   }
-}
-footer{
-    background: #245c48;
-    text-align: center;
-    p {
-        padding: 0.5rem 0;
-        margin: 0;
-        a{
-            color: white;
-        }
-    }
-}
 
-// media quesry for 810px size
+// media query for 810px size
 @media (max-width:810px) {
     section{
         ul{
@@ -294,6 +57,7 @@ footer{
     }
     
 }
+
 // media query for 700px size
 @media (max-width:700px) {
     header {
@@ -344,7 +108,7 @@ footer{
     }
 }
 
-// list of all naimation
+// list of all animation
 @keyframes slidingRight {
     0%{
         transform: translate(1000px);
@@ -400,13 +164,5 @@ footer{
 
     100%{
         transform: translateY(10px);
-    }
-}
-@keyframes moving {
-    0%{
-        transform: rotate(-15deg)
-    }
-    100%{
-        transform: rotate(25deg);
     }
 }

@@ -1,8 +1,7 @@
-// import logo 
-import logo from "../assets/logo.png"
 // import font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleDown } from "@fortawesome/free-solid-svg-icons";
+import "./home.scss"
 
 
 const Header = (props) => {
@@ -12,15 +11,12 @@ const Header = (props) => {
     }
     
     return(
-        <header>
-                <nav>
-                       <h3>Food Hub <img className="logo" src={logo} alt="{website logo}" /></h3>
-                </nav>
+        <header className="home-page">
                 <article className="wrapper">
                     <div>
                         <h1 className="animation-left">Explore Thousands </h1>
                         <h1 className="animation-center">of</h1>
-                        <h1 className="animation-right" >Cusines Recipes</h1>
+                    <h1 className="animation-right" >Cuisine Recipes</h1>
                     </div>
                     <form action="#" onSubmit={handleFindRecipe} >
                         {

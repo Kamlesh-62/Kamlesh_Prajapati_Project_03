@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensilSpoon } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import '../App.scss';
+import "./goTop.scss"
 
 
 const GoTop = ({ findRecipeHandler}) => {
