@@ -5,14 +5,14 @@ import React, {  useState, useRef } from "react";
 import { Route,Routes } from "react-router-dom";
 
 // import components
-import Navbar from "./components/sections/Navbar.js";
-import CreatRecipe from "./components/Pages/CreatRecipe.js";
-import YourRecipe from "./components/Pages/YourRecipe";
-import ListOfRecipe from "./components/Pages/ListOfRecipe.js";
-import Home from "./components/sections/Home";
-import GoTop from "./components/feature/GoTop.js";
-import {Footer} from "./components/sections/Footer"
-import IndividualRecipe from "./components/Pages/IndividualRecipe"
+import Navbar from "./sections/Navbar.js";
+import CreatRecipe from "./Pages/CreatRecipe.js";
+import YourRecipe from "./Pages/YourRecipe";
+import ListOfRecipe from "./Pages/ListOfRecipe.js";
+import Home from "./sections/Home";
+import GoTop from "./components/GoTop.js";
+import {Footer} from "./sections/Footer"
+import IndividualRecipe from "./Pages/IndividualRecipe"
 
 // import styling 
 import './App.scss';
