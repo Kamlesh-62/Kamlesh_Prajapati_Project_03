@@ -1,32 +1,42 @@
 import { useRef, useState } from "react";
 import "./creatRecipe.scss"
+import firebaseApp from "../../firebase/firebase"
+
 
 const CreatRecipe = () => {
-    const [recipeTitle, setRecipeTitle] = useState("")
-    const [making, setMaking] = useState("")
-    const [cookingTime, setCookingTime] = useState("")
+    const [title, setTitle] = useState("")
+    const [makingDescription, setMakingDescription] = useState("")
+    const [makingTime, setMakingTime] = useState("")
     const [ingredients,setIngredients] = useState('')
     const [listOfIngredients,setListOfIngredients] = useState([])
     const ingredientsInput =useRef(null)
 
     // store input value into state...
-    const handleSubmit =(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(listOfIngredients, cookingTime, making, recipeTitle)
+        const doc = {title, ingredients, makingDescription,makingTime:makingTime + "minutes" }
+        try{
+            await firebaseApp.collection("recipes").add(doc)
+        } catch(error){
+            console.log(error)
+        }
+        setTitle("")
+        setMakingDescription("")
+        setMakingTime("")
     }
 
     const handleRecipeTitle =(e) => {
-        setRecipeTitle(e.target.value);
+        setTitle(e.target.value);
+        
     }
     const handleRecipeMaking =(e) => {
-        setMaking(e.target.value)
+        setMakingDescription(e.target.value)
     }
     const handleIngredients = (e) => {
         setIngredients(e.target.value)
     }
     const handleAddIngredients = (e) => {
         e.preventDefault()
-
         const ing = ingredients.trim()
 
         if(ing && !listOfIngredients.includes(ing)){
@@ -46,7 +56,7 @@ const CreatRecipe = () => {
                 <input type="text" id="recipeTitle" 
                 placeholder="Recipe Title" 
                 onChange={handleRecipeTitle} 
-                value={recipeTitle} required/>
+                value={title} required/>
 
                 <label htmlFor="listOfIngredients">Add Ingredients</label>
                 <input type="text" id="listOfIngredients" 
@@ -59,14 +69,14 @@ const CreatRecipe = () => {
                 <label htmlFor="makingDescription">Making Description</label>
                 <textarea type="text" id="makingDescription" 
                 placeholder="Making Description" 
-                value={making} 
+                value={makingDescription} 
                 onChange={handleRecipeMaking} required/>
 
                 <label htmlFor="makingTime"> Making Time</label>
                 <input type="number" id="makingTime" 
                 placeholder="Making Time" 
-                onChange={ (e) => setCookingTime(e.target.value)} 
-                value={cookingTime} required/>
+                onChange={ (e) => setMakingTime(e.target.value)} 
+                value={makingTime} required/>
 
                 <button>Submit</button>
 

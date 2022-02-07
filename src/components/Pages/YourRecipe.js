@@ -9,7 +9,8 @@ const YourRecipe = () => {
 
     useEffect ( () => {
         setIsPending(true)
-        firebaseApp.collection("recipes").get().then( (snapshot) => {
+
+        firebaseApp.collection("recipes").onSnapshot((snapshot) => {
             if(snapshot.empty){
                 setError("No recipes data")
                 setIsPending(false)
@@ -23,7 +24,7 @@ const YourRecipe = () => {
                 setData(results)
                 console.log(results)
             }    
-        }).catch((error) => {
+        },(error)=>{
             setError(error.message)
             setIsPending(false)
         })
