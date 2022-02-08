@@ -1,0 +1,36 @@
+body{
+    background: #e7f1ee;
+}.individualRecipe{
+    width: 60%;
+    margin: 0 auto;
+    background: #a2bbaf;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #245c48;
+
+    h2{
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1.4rem;
+    }
+    p{
+        text-align: center;
+        letter-spacing: 1px;
+    }
+    ul {
+        margin-top: 2rem;
+        font-family: 'Lato', sans-serif;
+            li{
+            list-style: circle;
+            margin: 1rem 0;
+        }
+    }
+    .recipeDescription{
+        text-align: left;
+        margin-top: 2rem;
+        letter-spacing: 1px;
+
+    }
+}

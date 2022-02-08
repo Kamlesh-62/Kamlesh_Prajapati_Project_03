@@ -14,7 +14,9 @@ const CreatRecipe = () => {
     // store input value into state...
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const doc = {title, ingredients, makingDescription,makingTime:makingTime + "minutes" }
+        const doc = { title, listOfIngredients, makingDescription, makingTime: makingTime + " minutes " }
+        console.log(doc)
+
         try{
             await firebaseApp.collection("recipes").add(doc)
         } catch(error){
@@ -41,6 +43,7 @@ const CreatRecipe = () => {
 
         if(ing && !listOfIngredients.includes(ing)){
             setListOfIngredients(prevIngredients => [...prevIngredients, ing])
+            
         }
         setIngredients("")
         ingredientsInput.current.focus()
@@ -70,6 +73,7 @@ const CreatRecipe = () => {
                     />
                     <button onClick={handleAddIngredients} className="addIngredientsBtn" >Add</button>
                 </div>
+                <p>{listOfIngredients.map(i => <em key={i}>{i}, </em>)}</p>
                
 
                 <label htmlFor="makingDescription" className="sr-only">Making Description</label>

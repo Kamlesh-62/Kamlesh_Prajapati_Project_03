@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import firebaseApp from "../firebase/firebase"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import "./individualRecipe.scss"
+
 
 export default function IndividualRecipe (){
     const {id} = useParams()
@@ -12,9 +12,9 @@ export default function IndividualRecipe (){
     const [error, setError] = useState(null)
 
     // getting recipe from firebase
-    useEffect ( ()=>{
+     useEffect ( ()=>{
         setIsPending(true)
-        firebaseApp.collection("recipes").doc(id).get().then((doc)=>{
+            firebaseApp.collection("recipes").doc(id).get().then((doc)=>{
             if(doc.exists){
                 setIsPending(false)
                 setRecipe(doc.data())
@@ -24,6 +24,7 @@ export default function IndividualRecipe (){
                 setError("No data find")
             }
         })
+       
     },[id])
 
 
@@ -33,13 +34,20 @@ export default function IndividualRecipe (){
             {isPending && <p>Loading....</p>}
             {recipe && (
                 <>
-                <h2>{recipe.title}</h2>
-                <p>{recipe.makingTime} of cook time</p>
-                <ul>
-                    {recipe.ingredients.map(ingredient => <li key={ingredient}>{ingredient}</li>)}
-                </ul>
-                <p>{recipe.makingDescription}</p>
-                <div><span><FontAwesomeIcon icon={faTrash} /></span></div>
+                <div className="individualRecipe" >
+                    <h2 className="recipeTitle">{recipe.title}</h2>
+                    <p className="recipeTitle"> Cooking Time: {recipe.makingTime}</p>
+                    <ul className="listOfIngredients">
+                        Ingredients:
+                        {
+                        recipe.listOfIngredients.map(ingredient => <li className="ingredient" key={ingredient}>{ingredient}, </li>)
+                        }
+                    </ul>
+                    <p className="recipeDescription">RECIPE:
+                    <br />
+                    <br />
+                    {recipe.makingDescription}</p>
+                </div>
                 </>
             )}
         </div>

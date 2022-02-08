@@ -1,0 +1,49 @@
+.yourRecipeList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-family: 'Lato', sans-serif;
+    background: #e7f1ee;
+        
+    .recipeList{
+        background-color: #a2bbaf;
+        margin: 1.5rem;
+        padding: 1.5rem;
+        border-radius: 5px;
+        flex: 0 1 500px;
+        box-shadow: 0 0 5px #245c48;
+        h3{
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        p{
+            letter-spacing: 1px;
+            font-size: 0.9rem;line-height: 1.5;
+            margin: 1rem 0;
+        }
+        div{
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            margin: 1rem 0;
+            font-weight: 500;
+           
+        }
+       
+        .deleteBtn{
+            font-size: 1.2rem;
+            color: #245c48;
+            cursor: pointer;
+            text-align: right;
+        }
+        a{
+            padding: 0.25rem 0.75rem;
+            border: 2px solid #245c48;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+    }
+}

@@ -10,24 +10,23 @@ const YourRecipe = () => {
     useEffect ( () => {
         setIsPending(true)
 
-        firebaseApp.collection("recipes").onSnapshot((snapshot) => {
+        const unSub = firebaseApp.collection("recipes").onSnapshot((snapshot) => {
             if(snapshot.empty){
                 setError("No recipes data")
                 setIsPending(false)
             }else{
                 let results =[]
                 snapshot.docs.forEach((doc) => {
-                    console.log(doc)
                     results.push({ id:doc.id, ...doc.data() })
                 })
                 setIsPending(false)
                 setData(results)
-                console.log(results)
             }    
         },(error)=>{
             setError(error.message)
             setIsPending(false)
         })
+        return () => unSub()
     },[])
     // console.log(data)
 
