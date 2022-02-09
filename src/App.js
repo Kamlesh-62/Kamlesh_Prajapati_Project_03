@@ -2,17 +2,21 @@
 import axios from "axios";
 import React, {  useState, useRef } from "react";
 
-import { Route,Routes } from "react-router-dom";
+import { BrowserRouter, Route,Routes } from "react-router-dom";
 
-// import components
-import Navbar from "./sections/Navbar.js";
-import CreatRecipe from "./Pages/CreatRecipe.js";
-import YourRecipe from "./Pages/YourRecipe";
-import ListOfRecipe from "./Pages/ListOfRecipe.js";
-import Home from "./sections/Home";
+// import pages
+import CreatRecipe from "./Pages/creatRecipe/CreatRecipe.js";
+import YourRecipe from "./Pages/yourRecipe/YourRecipe";
+import ListOfRecipe from "./Pages/listOfRecipe/ListOfRecipe.js";
+import IndividualRecipe from "./Pages/individualRecipe/IndividualRecipe"
+
+// import component
 import GoTop from "./components/GoTop.js";
-import {Footer} from "./sections/Footer"
-import IndividualRecipe from "./Pages/IndividualRecipe"
+
+// import sections
+import Navbar from "./sections/navbar/Navbar.js";
+import Home from "./sections/home/Home";
+import {Footer} from "./sections/footer/Footer"
 
 // import styling 
 import './App.scss';
@@ -81,7 +85,6 @@ function App() {
   return (
     <React.Fragment>
       <Navbar />
-
       <Routes>
         <Route path="/" element=
         {<>  
@@ -128,7 +131,6 @@ function App() {
         <Route path="/recipeList" element={<YourRecipe />} />
         <Route path="/yourrecipelist/:id" element={<IndividualRecipe />} />
       </Routes>
-
       <Footer />
     </React.Fragment>
   );

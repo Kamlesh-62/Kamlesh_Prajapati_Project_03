@@ -1,0 +1,103 @@
+body{
+    background: #e7f1ee;
+    
+    .individualRecipe{
+        width: 60%;
+        margin: 2rem auto;
+        background: #a2bbaf;
+        padding: 2rem;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #245c48;
+        margin-bottom: 3rem;
+        
+        h2{
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+        }
+        p{
+            text-align: center;
+            letter-spacing: 1px;
+            span{
+                color: #245c48;
+            }
+        }
+        ul {
+            margin-top: 2rem;
+            font-family: 'Lato', sans-serif;
+            color: #245c48;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            li{
+                list-style: circle;
+                margin: 1rem 0;
+                color: #000;
+            }
+        }
+        .recipeDescription{
+            text-align: left;
+            margin-top: 2rem;
+            letter-spacing: 1px;
+            color: #245c48;
+            line-height: 1.5;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+
+            span{
+                text-decoration: none;
+                color: #000;
+            }
+            
+        }
+    }
+   div.loader {
+        border: 10px solid #a2bbaf;
+        border-radius: 50%;
+        border-top: 10px solid #245c48;
+        width: 100px;
+        height: 100px;
+        animation: spinner 4s linear infinite;
+        margin: 0 auto;
+        margin-top: 8rem;  
+    }
+
+}
+@media (max-width:1000px){
+    body{
+    background: #e7f1ee;
+
+        .individualRecipe{
+            width: 70%;
+        }
+    }
+}
+@media (max-width:750px){
+    body{
+    background: #e7f1ee;
+
+        .individualRecipe{
+            width: 80%;
+        }
+    }
+}
+@media (max-width:600px){
+    body{
+    background: #e7f1ee;
+
+        .individualRecipe{
+            width: 90%;
+        }
+    }
+}
+@keyframes spinner {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+        .error{
+        font-size: 2rem;
+        letter-spacing: 1px;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        color: #245c48;
+}

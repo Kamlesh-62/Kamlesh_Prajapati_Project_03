@@ -1,0 +1,85 @@
+section{
+    background-color: #e7f1ee;
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        li{
+            width: 35%;
+            margin:0 1rem;
+            align-content: center;
+            margin-top: 2rem;
+            background: #a2bbaf;
+            box-shadow: 0 0 5px #245c48;
+            border-radius: 5px;
+            position: relative;
+            &:hover{
+                transform: scale(1.002);
+            }
+            img{
+                width: 100%;
+            }
+            h3,
+            h4{
+                padding: 0 1rem;
+                color: #35423c;
+            }
+            p{
+                padding: 0 1rem;
+                color: #1d322b;
+            }
+            a{
+                letter-spacing: 1px;
+                color: white;
+            }
+            button {
+                background: #245c48;
+                margin: 0 1rem 1rem 1rem;
+                padding: 0.5rem 0.7rem;
+                border-radius: 7px;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #fff;
+                cursor: pointer;
+                text-align:center;
+                border: none;
+                background-size: 300% 100%;
+                transition: all .4s ease-in-out;
+                background-image: linear-gradient(to right, #219a70, #1d4135,  #245c48, #10804a);
+                box-shadow: 0 4px 10px 0 rgba(36, 96, 71, 0.75);
+                &:hover {
+                    background-position: 100% 0;
+                    transition: all .7s ease-in-out;
+                }
+            }
+            .saveButton{
+                position: absolute;
+                bottom: 25px;
+                right: 15px;
+                color: #245c48;
+                font-size: 1.7rem;
+                border-radius: 5px;
+                cursor: pointer;
+            } 
+        }   
+    }
+}
+
+// btn find another recipe
+.find-another-recipe{
+    text-align: center;
+    padding: 4rem 0;
+   a{
+       padding: 0.4rem 0.75rem;
+       border: 3px solid #245c48;
+       background: #245c48;
+       border-radius: 5px;
+       letter-spacing: 1px;
+       color: white;
+       &:hover{      
+           color: #1d4135;
+           background-color: #a2bbaf;
+           border: 3px solid #245c48;
+       }
+   }
+}

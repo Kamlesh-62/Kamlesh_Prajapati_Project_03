@@ -1,7 +1,9 @@
-
+// import font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensilSpoon } from "@fortawesome/free-solid-svg-icons";
+// import hooks
 import { useState, useEffect } from "react";
+// import stylings
 import "./goTop.scss"
 
 
