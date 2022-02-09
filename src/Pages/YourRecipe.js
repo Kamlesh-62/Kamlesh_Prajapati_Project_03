@@ -1,6 +1,11 @@
+// import component here
 import { YourRecipeList } from "./YourRecipeList";
+// import firebase 
 import  firebaseApp from "../firebase/firebase"
+// import hooks
 import { useEffect, useState } from "react";
+// import styling
+import "./yourRecipe.scss"
 
 const YourRecipe = () => {
     const [data, setData] = useState(null)
@@ -10,7 +15,7 @@ const YourRecipe = () => {
     useEffect ( () => {
         setIsPending(true)
 
-        const unSub = firebaseApp.collection("recipes").onSnapshot((snapshot) => {
+       const clearSub = firebaseApp.collection("recipes").onSnapshot((snapshot) => {
             if(snapshot.empty){
                 setError("No recipes data")
                 setIsPending(false)
@@ -26,14 +31,14 @@ const YourRecipe = () => {
             setError(error.message)
             setIsPending(false)
         })
-        return () => unSub()
+        return () => clearSub()
     },[])
     // console.log(data)
 
     return(
         <div>
-            {error && <p>{error}</p>}
-            {isPending && <p>Loading...</p>}
+            {error && <p className="error">{error}</p>}
+            {isPending && <div className="loader"></div>}
             {data && <YourRecipeList recipes={data}/>}  
         </div>
     )

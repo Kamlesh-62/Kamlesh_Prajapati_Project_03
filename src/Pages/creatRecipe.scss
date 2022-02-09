@@ -10,17 +10,20 @@
         padding-top: 1rem;
         font-family: 'Indie Flower', cursive;
         font-weight: bold;
+        animation: upToDown 1s ease-in-out;
+        padding-top: 3rem;
     }
     form{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        width: 400px;
+        margin: 0 auto;
 
         input{
             display: block;
             height: 2rem;
             margin-top: 2rem;
-            width: 400px;
+            width: 100%;
             border: none;
             letter-spacing: 1px;
             box-shadow: 0 0 5px rgb(32, 54, 43);
@@ -30,27 +33,31 @@
                 padding-left: 0.5rem;
             }
         }
-        .listOfIngredients{
-            display: inline;
-            margin-left: 4.7rem;
-            
-        }
-        .addIngredientsBtn{
-            margin-left: 1rem;
-            padding: 0.25rem 0.75rem;
-            border: 3px solid #245c48;
-            background: #245c48;
-            border-radius: 5px;
-            letter-spacing: 1px;
-            color: white;
-            &:hover{
-                color: #245c48;
-                background: transparent;
+        .ingredients-input{
+            display: flex;
+
+            .listOfIngredients{
+                width: 100%;
+            }
+            .addIngredientsBtn{
+                margin-left: 1rem;
+                padding: 0.25rem 0.75rem;
+                border: 3px solid #245c48;
+                background: #245c48;
+                border-radius: 5px;
+                letter-spacing: 1px;
+                color: white;
+                height: 2rem;
+                margin-top: 2rem;
+                &:hover{
+                    color: #245c48;
+                    background: transparent;
+                }
             }
         }
         textarea{
             display: block;
-            width: 400px;
+            width: 100%;
             margin-top: 2rem;
             border: none;
             border-radius: 5px;
@@ -63,7 +70,6 @@
             }
         }
         .submitBtn{
-            margin-top: 1rem;
             display: inline-block;
             padding: 0.4rem 0.9rem;
             background-color:#63a583;
@@ -75,11 +81,12 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            margin-top: 2rem;
             border-radius: 5px;
             border: 2px solid #1d322b;
             font-weight: 700;
             cursor: pointer;
+            width: 40%;
+            margin: 2rem auto;
 
             &:after {
                     content: '';
@@ -109,5 +116,24 @@
                 }
             }
         }   
+    }
+}
+
+@keyframes upToDown {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@media (max-width:450px){
+    .creatRecipes{
+        h2{
+            padding: 2rem 1rem;
+        }
+        form{
+            width: 320px;
+        }
     }
 }

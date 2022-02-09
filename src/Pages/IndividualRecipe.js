@@ -36,17 +36,17 @@ export default function IndividualRecipe (){
                 <>
                 <div className="individualRecipe" >
                     <h2 className="recipeTitle">{recipe.title}</h2>
-                    <p className="recipeTitle"> Cooking Time: {recipe.makingTime}</p>
+                    <p className="cookingTime"> Cooking Time: {recipe.cookingTime}</p>
                     <ul className="listOfIngredients">
                         Ingredients:
                         {
-                        recipe.listOfIngredients.map(ingredient => <li className="ingredient" key={ingredient}>{ingredient}, </li>)
+                        recipe.listOfIngredients.map(ingredient => <li className="ingredient" key={ingredient}>{ingredient} , </li>)
                         }
                     </ul>
                     <p className="recipeDescription">RECIPE:
                     <br />
                     <br />
-                    {recipe.makingDescription}</p>
+                    <span>{recipe.recipeDescription}</span></p>
                 </div>
                 </>
             )}

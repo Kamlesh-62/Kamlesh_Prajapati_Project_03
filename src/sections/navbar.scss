@@ -26,6 +26,8 @@ header.navbar{
                     padding: 0.1rem 0.5rem;
                     text-transform: uppercase;
                     font-size: 0.9rem;
+                    background: #064931;
+                    color: #FFF;
                 }
             }
 
@@ -38,7 +40,7 @@ header.navbar{
                     letter-spacing: 1px;
                     border: 2px solid #064931;
                     border-radius: 5px;
-                    padding: 0.1rem 0.5rem;
+                    padding: 0.1rem 1.1rem;
                     text-transform: uppercase;
                     font-size: 0.9rem;
                     
@@ -58,5 +60,21 @@ header.navbar{
     }
     100%{
         transform: rotate(25deg);
+    }
+}
+
+// media query 740px
+@media (max-width:740px){
+    header.navbar nav{
+        flex-direction: column;
+
+        .creatRecipeMenu ul{
+            flex-direction: column;
+            margin-right: 0;
+            li{
+                margin: 1rem 0;
+                width: 200px;
+            }
+        }
     }
 }

@@ -47,6 +47,11 @@ a{
 
 // media query for 810px size
 @media (max-width:810px) {
+    header.navbar {
+        nav h3{
+            margin-left: 0;
+        }
+    }
     section{
         ul{
             li{
@@ -82,7 +87,7 @@ a{
 }
 // media query for 550px size
 @media (max-width:550px) {
-    header {
+    header.navbar {
         nav h3{
             margin-left: 0;
         }
@@ -92,9 +97,7 @@ a{
                 width: 90%;
             }
         }
-        .scrollToSectionArrow{
-            margin-top: 1rem;
-        }
+        
     }
     section{
         ul{
@@ -106,57 +109,21 @@ a{
             }
         }
     }
-}
-
-// list of all animation
-@keyframes slidingRight {
-    0%{
-        transform: translate(1000px);
-        opacity: 0;
-    }
-    50%{
-        transform: translate(-300px);
-        opacity: 0.5;
-    }
-    75%{
-        transform: translate(75px);
-        opacity: 0.7;
-    }
-    100%{
-        transform: translate(0px);
-        opacity: 1;
+    header.home-page{
+        form{
+            input[type="text"]{
+                width: 80%;
+                height: 2rem;
+                font-size: 1rem;
+            }
+        }
+        .scrollToSectionArrow{
+            margin-top: 1rem;
+        }
     }
 }
 
-@keyframes slidingleft {
-    0%{
-        transform: translate(-1000px);
-        opacity: 0;
-    }
-    50%{
-        transform: translate(100px);
-        opacity: 0.5;
-    }
-    75%{
-        transform: translate(-75px);
-        opacity: 0.7;
-    }
-    100%{
-        transform: translate(0px);
-        opacity: 1;
-    }
-}
-@keyframes opacitty {
-    0%{
-        opacity: 0;
-    }
-    50%{
-        opacity: 0.5;
-    }
-    100%{
-        opacity: 1;
-    }
-}
+
 @keyframes upAndDown {
     0%{
         transform: translateY(-10px);

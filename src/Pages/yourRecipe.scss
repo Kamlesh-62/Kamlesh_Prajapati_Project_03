@@ -1,0 +1,26 @@
+.loader {
+  border: 10px solid #a2bbaf;
+  border-radius: 50%;
+  border-top: 10px solid #245c48;
+  width: 100px;
+  height: 100px;
+  animation: spinner 4s linear infinite;
+  margin: 0 auto;
+  margin-top: 8rem;
+  
+}
+
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.error{
+  font-size: 2rem;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: #245c48;
+  
+}
