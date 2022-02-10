@@ -65,14 +65,16 @@ a{
 
 // media query for 700px size
 @media (max-width:700px) {
-    header {
-        form{
+    header.home-page{
+        article form{
             input[type="text"]{
-                width: 70%;
+                width: 80%;
+                height: 3rem;
+                font-size: 1.2rem;
             }
         }
         .scrollToSectionArrow{
-            margin-top: 0.7rem;
+            margin-top: 1rem;
         }
     }
     section{
@@ -92,9 +94,13 @@ a{
             margin-left: 0;
         }
         
-        form{
+    }
+    header.home-page{
+        article form{
             input[type="text"]{
-                width: 90%;
+                width: 80%;
+                height: 3rem;
+                font-size: 1.2rem;
             }
         }
         
@@ -108,19 +114,7 @@ a{
                 margin: 1rem 0 ;
             }
         }
-    }
-    header.home-page{
-        form{
-            input[type="text"]{
-                width: 80%;
-                height: 3rem;
-                font-size: 1.2rem;
-            }
-        }
-        .scrollToSectionArrow{
-            margin-top: 1rem;
-        }
-    }
+    }  
 }
 
 
