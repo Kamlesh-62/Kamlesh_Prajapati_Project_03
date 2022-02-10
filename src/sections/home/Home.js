@@ -26,13 +26,13 @@ const Header = (props) => {
                         }
                         <label htmlFor="findRecipe" className="sr-only"> Search Your Recipe here</label>
                         <input type="text" id="findRecipe" placeholder="Search Recipe" onChange={inputHandler} value={userInput} />
-                        <button className="findRecipe">Find Recipe</button>
+                    <button className="findRecipe">Find Recipe</button>
                     </form>
                 </article>
                 <div className="scrollToSectionArrow" >
                     {
                         foods.length > 0 ?
-                        <FontAwesomeIcon onClick={handleScrollToSection} icon={faAngleDoubleDown} className="downArrow" ></FontAwesomeIcon> : <div> </div>
+                        <FontAwesomeIcon onClick={handleScrollToSection}  icon={faAngleDoubleDown} className="downArrow" ></FontAwesomeIcon> : <div> </div>
                     }
                 </div>
         </header>
