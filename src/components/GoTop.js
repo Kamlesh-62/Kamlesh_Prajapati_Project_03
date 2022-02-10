@@ -16,7 +16,7 @@ const GoTop = ({ findRecipeHandler}) => {
     }, [])
 
     const showButtonVisibilty = (findRecipeHandler) => {
-        if(window.pageYOffset > 330){
+        if(window.pageYOffset > 370){
             setShowButton(true);
         }else{
             setShowButton(false)
