@@ -10,7 +10,6 @@ import "./goTop.scss"
 const GoTop = ({ findRecipeHandler}) => {
     const[showButton, setShowButton] = useState("false");
 
-    // 
     useEffect ( ()=> {
         window.addEventListener("scroll", showButtonVisibilty)
     }, [])

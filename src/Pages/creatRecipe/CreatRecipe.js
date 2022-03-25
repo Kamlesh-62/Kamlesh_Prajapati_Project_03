@@ -1,6 +1,6 @@
 // import hooks
 import { useRef, useState } from "react";
-
+import { useNavigate } from "react-router-dom"
 // import firebase
 import firebaseApp from "../../firebase/firebase"
 
@@ -14,6 +14,7 @@ const CreatRecipe = () => {
     const [ingredients,setIngredients] = useState('')
     const [listOfIngredients,setListOfIngredients] = useState([])
     const ingredientsInput =useRef(null)
+    const navigate = useNavigate()
 
     // store input value into state... and add it on firestore database
     const handleSubmit = async (e) => {
@@ -22,6 +23,7 @@ const CreatRecipe = () => {
 
         try{
             await firebaseApp.collection("recipes").add(doc)
+            navigate('/recipeList')
         } catch(error){
             console.log(error)
         }

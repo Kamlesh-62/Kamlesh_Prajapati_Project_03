@@ -28,7 +28,7 @@ const YourRecipe = () => {
                 setData(results)
             }    
         },(error)=>{
-            setError(error.message)
+           setError("No recipes data")
             setIsPending(false)
         })
         return () => clearSub()

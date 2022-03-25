@@ -16,3 +16,4 @@ firebase.initializeApp(firebaseConfig)
 const firebaseApp = firebase.firestore()
 
 export default firebaseApp;
+
