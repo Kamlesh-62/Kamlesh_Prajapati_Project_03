@@ -23,7 +23,7 @@ const Navbar = () => {
                 <label htmlFor="hamburgerToggle"><div>
                     <FontAwesomeIcon className="hamburgerMenu" icon={faBars} />
                 </div></label>
-                <input type="checkbox" id="hamburgerToggle" className="toggelMenuCheckB"/>
+                <input type="checkbox" id="hamburgerToggle" className="toggelMenu"/>
                 <div className="creatRecipeMenu">
                     <ul>
                         <li className="creatRecipe">
