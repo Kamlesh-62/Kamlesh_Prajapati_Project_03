@@ -33,7 +33,6 @@ const YourRecipe = () => {
         })
         return () => clearSub()
     },[])
-    // console.log(data)
 
     return(
         <div>
